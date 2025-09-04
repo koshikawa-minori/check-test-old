@@ -14,3 +14,13 @@ yarn-error.log
 /.idea
 /.vscode
 /docker/mysql/data/
+# 練習用ファイルはすべて無視
+/src/app/Http/Controllers/TestController.php
+/src/app/Http/Requests/
+/src/app/Models/Task.php
+/src/database/migrations/2025_09_04_210203_create_tasks_table.php
+/src/public/css/
+/src/resources/views/hello.blade.php
+/src/vendor/
+/src/storage/
+/src/bootstrap/cache/
