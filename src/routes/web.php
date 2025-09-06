@@ -16,3 +16,16 @@ use App\Http\Controllers\TestController;
 */
 
 Route::get('/hello', [TestController::class, 'index']);
+
+//復習用
+Route::get('/redo', function () {
+  return view('redo.test');
+});
+
+Route::post('/redo/confirm', function () {
+  return 'redo confirm ok';
+});
+
+Route::post('/redo', function () {
+  return 'redo store ok';
+});
