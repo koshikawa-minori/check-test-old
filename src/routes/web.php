@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\RedoController;
 
 
 /*
@@ -18,14 +19,7 @@ use App\Http\Controllers\TestController;
 Route::get('/hello', [TestController::class, 'index']);
 
 //復習用
-Route::get('/redo', function () {
-  return view('redo.test');
-});
 
-Route::post('/redo/confirm', function () {
-  return 'redo confirm ok';
-});
-
-Route::post('/redo', function () {
-  return 'redo store ok';
-});
+Route::get('/redo', [RedoController::class, 'index'])->name('redo.index');
+Route::post('/redo/confirm', [RedoController::class, 'confirm'])->name('redo.confirm');
+Route::post('/redo', [RedoController::class, 'store'])->name('redo.store');
