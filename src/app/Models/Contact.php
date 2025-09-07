@@ -14,9 +14,7 @@ class Contact extends Model
     'last_name',
     'gender',
     'email',
-    'tel',
-    'address',
-    'building',
-    'detail'
+    'category_id',
+    'detail',
   ];
 }

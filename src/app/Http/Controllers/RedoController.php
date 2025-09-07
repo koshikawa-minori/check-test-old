@@ -3,24 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
 class RedoController extends Controller
 {
-    // GET /redo
+  //入力画面(get/redo)
     public function index()
     {
-        return 'redo index (controller)';
+      return view('redo.index');
     }
 
-    // POST /redo/confirm
     public function confirm(Request $request)
     {
-        return 'redo confirm (controller)';
+      $data = $request->all();
+      return view('redo.confirm', ['input' => $data]);
     }
 
-    // POST /redo
     public function store(Request $request)
     {
-        return 'redo store (controller)';
+      $data = $request->all();
+      Contact::create($data);
+      return  redirect('/redo')->with('status', '保存しました');
     }
+
 }
