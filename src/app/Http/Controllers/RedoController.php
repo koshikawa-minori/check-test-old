@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\Models\Contact;
+use App\Http\Requests\RedoRequest;
 
 class RedoController extends Controller
 {
@@ -13,16 +14,21 @@ class RedoController extends Controller
       return view('redo.index');
     }
 
-    public function confirm(Request $request)
+    public function confirm(RedoRequest $request)
     {
-      $data = $request->all();
-      return view('redo.confirm', ['input' => $data]);
+      $validated = $request->validated();
+      return view('redo.confirm', ['input' =>  $validated]);
     }
 
-    public function store(Request $request)
+    public function store(RedoRequest $request)
     {
-      $data = $request->all();
-      Contact::create($data);
+
+      if ($request->has('_back')) {
+        return redirect('/redo')->withInput();
+      }
+
+      $validated = $request->validated();
+      Contact::create($validated);
       return  redirect('/redo')->with('status', '保存しました');
     }
 
